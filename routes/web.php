@@ -50,6 +50,6 @@ Route::group(['prefix' => '/admins'], function() {
 Route::group(['prefix' => '/profile'], function() {
     Route::get('/', [ProfileController::class, 'index'])->name('profile');
     Route::post('/',[ProfileController::class, 'update']);
-    Route::get('/create',[ProfileController::class, 'create']);
-    Route::get('/delete/{id}',[ProfileController::class, 'destroy']);
+    Route::get('/password', [ProfileController::class, 'password'])->name('password');
+    Route::post('/password',[ProfileController::class, 'changePassword']);
 });

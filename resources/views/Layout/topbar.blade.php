@@ -12,6 +12,10 @@
                     </a> --}}
 
                 <a class="nav-link d-none d-sm-inline-block"
+                    href="/profile/password">
+                    Change Password
+                </a>
+                <a class="nav-link d-none d-sm-inline-block"
                     href="/profile">
                     Update Profile
                 </a>

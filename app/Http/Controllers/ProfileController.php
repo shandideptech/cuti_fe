@@ -42,4 +42,33 @@ class ProfileController extends Controller
 
         return redirect('/profile')->with('success', $profile->json('message'));
     }
+
+    public function password(){
+        return view('Profile.changePassword');
+    }
+
+    public function changePassword(Request $request){
+        $profile = Http::withHeaders([
+            'Authorization' => 'Bearer '.session('token'),
+            'Accept' => 'application/json',
+        ])->put(env('BE_URL').'/profile/password', $request);
+
+        if ($profile->status() == 401){
+            return redirect()->route('login');
+        }
+
+        if ($profile->status() == 422){
+            return redirect()->back()->withErrors($profile->json());
+        }
+
+        if ($profile->status() == 400){
+            return redirect()->back()->with('error', $profile->json('userMessage'));
+        }
+
+        if ($profile->status() == 500){
+            return redirect()->back()->with('error', $profile->json('userMessage'));
+        }
+
+        return redirect('/profile/password')->with('success', $profile->json('message'));
+    }
 }
