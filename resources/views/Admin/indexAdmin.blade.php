@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-between mb-3">
-            <h1 class="h3 mb-3">List Data Admin</h1>
+            <h1 class="h3 mb-3">Master Data Admin</h1>
             <button class="btn btn-outline-primary" onclick="location.href='{{ url('admins/create') }}'">
                 <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
         </div>
