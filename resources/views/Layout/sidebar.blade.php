@@ -18,7 +18,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/employee_take_leaves">
+                <a class="sidebar-link" href="/employee-take-leaves">
                     <i class="bi bi-card-list align-middle" style="font-size: 1.5rem;"></i> <span class="align-middle">List Cuti Pegawai</span>
                 </a>
             </li>
