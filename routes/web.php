@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     LoginController,
-    EmployeeController
+    EmployeeController,
+    LeaveController,
 };
 
 /*
@@ -26,4 +27,12 @@ Route::group(['prefix' => '/employees'], function() {
     Route::get('/create',[EmployeeController::class, 'create']);
     Route::post('/',[EmployeeController::class, 'store']);
     Route::get('/delete/{id}',[EmployeeController::class, 'destroy']);
+});
+Route::group(['prefix' => '/leaves'], function() {
+    Route::get('/', [LeaveController::class, 'index'])->name('leaves');
+    Route::get('/edit/{id}',[LeaveController::class, 'edit']);
+    Route::post('/{id}',[LeaveController::class, 'update']);
+    Route::get('/create',[LeaveController::class, 'create']);
+    Route::post('/',[LeaveController::class, 'store']);
+    Route::get('/delete/{id}',[LeaveController::class, 'destroy']);
 });
