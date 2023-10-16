@@ -12,7 +12,7 @@
                     </a> --}}
 
                 <a class="nav-link d-none d-sm-inline-block"
-                    href="#">
+                    href="/profile">
                     Update Profile
                 </a>
                 <a class="nav-link d-none d-sm-inline-block"

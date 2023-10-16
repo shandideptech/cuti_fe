@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     EmployeeController,
     LeaveController,
     AdminController,
+    ProfileController,
 };
 
 /*
@@ -45,4 +46,10 @@ Route::group(['prefix' => '/admins'], function() {
     Route::get('/create',[AdminController::class, 'create']);
     Route::post('/',[AdminController::class, 'store']);
     Route::get('/delete/{id}',[AdminController::class, 'destroy']);
+});
+Route::group(['prefix' => '/profile'], function() {
+    Route::get('/', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/',[ProfileController::class, 'update']);
+    Route::get('/create',[ProfileController::class, 'create']);
+    Route::get('/delete/{id}',[ProfileController::class, 'destroy']);
 });
