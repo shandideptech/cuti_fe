@@ -21,6 +21,7 @@ use App\Http\Controllers\{
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['prefix' => '/employees'], function() {
     Route::get('/', [EmployeeController::class, 'index'])->name('employees');
     Route::get('/edit/{id}',[EmployeeController::class, 'edit']);

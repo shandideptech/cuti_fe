@@ -16,7 +16,7 @@
                     Update Profile
                 </a>
                 <a class="nav-link d-none d-sm-inline-block"
-                    href="#">
+                    href="/logout">
                     Logout
                 </a>
             </li>
