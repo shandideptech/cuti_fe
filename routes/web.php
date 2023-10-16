@@ -5,6 +5,7 @@ use App\Http\Controllers\{
     LoginController,
     EmployeeController,
     LeaveController,
+    AdminController,
 };
 
 /*
@@ -35,4 +36,12 @@ Route::group(['prefix' => '/leaves'], function() {
     Route::get('/create',[LeaveController::class, 'create']);
     Route::post('/',[LeaveController::class, 'store']);
     Route::get('/delete/{id}',[LeaveController::class, 'destroy']);
+});
+Route::group(['prefix' => '/admins'], function() {
+    Route::get('/', [AdminController::class, 'index'])->name('admins');
+    Route::get('/edit/{id}',[AdminController::class, 'edit']);
+    Route::post('/{id}',[AdminController::class, 'update']);
+    Route::get('/create',[AdminController::class, 'create']);
+    Route::post('/',[AdminController::class, 'store']);
+    Route::get('/delete/{id}',[AdminController::class, 'destroy']);
 });
