@@ -62,3 +62,7 @@ Route::group(['prefix' => '/employee-take-leaves'], function() {
     Route::post('/',[EmployeeTakeLeaveController::class, 'store']);
     Route::get('/delete/{id}',[EmployeeTakeLeaveController::class, 'destroy']);
 });
+Route::get('/set-language/{language}', function($language){
+    session(['locale' => $language]);
+    return redirect()->back();
+});

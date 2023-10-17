@@ -18,6 +18,10 @@
                     href="/logout">
                     Logout
                 </a>
+                <div class="btn-group">
+                    <button class="btn btn-outline-secondary" onclick="location.href='{{ url('set-language/id') }}'">ID</button>
+                    <button class="btn btn-outline-secondary" onclick="location.href='{{ url('set-language/en') }}'">EN</button>
+                </div>
             </li>
         </ul>
     </div>
