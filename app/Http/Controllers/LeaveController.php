@@ -7,15 +7,26 @@ use Illuminate\Support\Facades\Http;
 
 class LeaveController extends Controller
 {
+    public function __construct(){
+        $this->middleware(function ($request, $next) {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer '.session('token'),
+                'Accept' => 'application/json',
+            ])->get(env('BE_URL').'/auth/check-authentication');
+
+            if($response->status() == 401){
+                return redirect()->route('login');
+            }
+            
+            return $next($request);
+        });
+    }
+
     public function index(){
         $leaves = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->get(env('BE_URL').'/leaves');
-
-        if ($leaves->status() == 401){
-            return redirect()->route('login');
-        }
         
         return view('Leave.indexLeave', [
             'leaves' => $leaves->json('data')
@@ -31,10 +42,6 @@ class LeaveController extends Controller
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->post(env('BE_URL').'/leaves', $request);
-
-        if ($leave->status() == 401){
-            return redirect()->route('login');
-        }
 
         if ($leave->status() == 400){
             return redirect()->back()->withErrors($leave->json());
@@ -53,10 +60,6 @@ class LeaveController extends Controller
             'Accept' => 'application/json',
         ])->get(env('BE_URL').'/leaves/'.$id);
 
-        if ($leave->status() == 401){
-            return redirect()->route('login');
-        }
-
         return view('Leave.updateLeave', [
             'leave' => $leave->json('data')
         ]);
@@ -67,10 +70,6 @@ class LeaveController extends Controller
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->put(env('BE_URL').'/leaves/'.$id, $request);
-
-        if ($leave->status() == 401){
-            return redirect()->route('login');
-        }
 
         if ($leave->status() == 400){
             return redirect()->back()->withErrors($leave->json());
@@ -88,10 +87,6 @@ class LeaveController extends Controller
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->delete(env('BE_URL').'/leaves/'.$id);
-
-        if ($leave->status() == 401){
-            return redirect()->route('login');
-        }
 
         return redirect()->back()->with('success', $leave->json('message'));
     }

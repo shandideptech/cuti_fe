@@ -7,15 +7,26 @@ use Illuminate\Support\Facades\Http;
 
 class EmployeeController extends Controller
 {
+    public function __construct(){
+        $this->middleware(function ($request, $next) {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer '.session('token'),
+                'Accept' => 'application/json',
+            ])->get(env('BE_URL').'/auth/check-authentication');
+
+            if($response->status() == 401){
+                return redirect()->route('login');
+            }
+            
+            return $next($request);
+        });
+    }
+
     public function index(){
         $employees = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->get(env('BE_URL').'/employees');
-
-        if ($employees->status() == 401){
-            return redirect()->route('login');
-        }
         
         return view('Employee.indexEmployee', [
             'employees' => $employees->json('data')
@@ -31,10 +42,6 @@ class EmployeeController extends Controller
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->post(env('BE_URL').'/employees', $request);
-
-        if ($employee->status() == 401){
-            return redirect()->route('login');
-        }
 
         if ($employee->status() == 400){
             return redirect()->back()->withErrors($employee->json());
@@ -53,10 +60,6 @@ class EmployeeController extends Controller
             'Accept' => 'application/json',
         ])->get(env('BE_URL').'/employees/'.$id);
 
-        if ($employee->status() == 401){
-            return redirect()->route('login');
-        }
-
         return view('Employee.updateEmployee', [
             'employee' => $employee->json('data')
         ]);
@@ -67,10 +70,6 @@ class EmployeeController extends Controller
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->put(env('BE_URL').'/employees/'.$id, $request);
-
-        if ($employee->status() == 401){
-            return redirect()->route('login');
-        }
 
         if ($employee->status() == 400){
             return redirect()->back()->withErrors($employee->json());
@@ -88,10 +87,6 @@ class EmployeeController extends Controller
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
         ])->delete(env('BE_URL').'/employees/'.$id);
-
-        if ($employee->status() == 401){
-            return redirect()->route('login');
-        }
 
         if ($employee->status() == 400){
             return redirect()->back()->with('error', $employee->json('userMessage'));
