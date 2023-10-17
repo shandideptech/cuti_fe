@@ -1,8 +1,8 @@
 @extends('Layout.main')
 @section('content')
     <div class="p2 mx-auto" style="width:50%">
-        <div class="mb-3 fs-5"><a class="mb-2" href="/admins"><i class="bi bi-arrow-left me-2"></i>Kembali</a></div>
-        <h2>Form Edit Data Admin</h2>
+        <div class="mb-3 fs-5"><a class="mb-2" href="/admins"><i class="bi bi-arrow-left me-2"></i>@lang('leave.button.back')</a></div>
+        <h2>@lang('leave.title.edit')</h2>
         <form class="form-floating" method="POST" action="/admins/{{ $admin['id'] }}">
             @csrf
             <div class="form-group">

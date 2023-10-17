@@ -6,18 +6,13 @@
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
-                    {{-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" data-bs-toggle="dropdown"
-                        href="#">
-                        <i class="align-middle" data-feather="settings"></i>
-                    </a> --}}
-
                 <a class="nav-link d-none d-sm-inline-block"
                     href="/profile/password">
-                    Change Password
+                    @lang('topbar.change_password')
                 </a>
                 <a class="nav-link d-none d-sm-inline-block"
                     href="/profile">
-                    Update Profile
+                    @lang('topbar.update_profile')
                 </a>
                 <a class="nav-link d-none d-sm-inline-block"
                     href="/logout">

@@ -2,9 +2,9 @@
 @section('content')
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-between mb-3">
-            <h1 class="h3 mb-3">List Cuti Pegawai</h1>
+            <h1 class="h3 mb-3">@lang('employeeTakeLeave.title.index')</h1>
             <button class="btn btn-outline-primary" onclick="location.href='{{ url('employee-take-leaves/create') }}'">
-                <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
+                <i class="bi bi-file-earmark-plus"></i> @lang('employeeTakeLeave.button.add')</button>
         </div>
         <div class="row" id="read"></div>
     </div>
@@ -15,11 +15,11 @@
         <table class="table table-striped-columns">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Alasan Cuti</th>
-                    <th scope="col">Tanggal Mulai Cuti</th>
-                    <th scope="col">Tanggal Selesai Cuti</th>
+                    <th scope="col">#</th>
+                    <th scope="col">@lang('employeeTakeLeave.column.name')</th>
+                    <th scope="col">@lang('employeeTakeLeave.column.leave')</th>
+                    <th scope="col">@lang('employeeTakeLeave.column.start_date')</th>
+                    <th scope="col">@lang('employeeTakeLeave.column.end_date')</th>
                     <th scope="col"></th>
             </td>
                 </tr>

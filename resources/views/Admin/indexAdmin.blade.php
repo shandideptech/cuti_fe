@@ -2,9 +2,9 @@
 @section('content')
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-between mb-3">
-            <h1 class="h3 mb-3">Master Data Admin</h1>
+            <h1 class="h3 mb-3">@lang('admin.title.index')</h1>
             <button class="btn btn-outline-primary" onclick="location.href='{{ url('admins/create') }}'">
-                <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
+                <i class="bi bi-file-earmark-plus"></i> @lang('admin.button.add')</button>
         </div>
         <div class="row" id="read"></div>
     </div>
@@ -15,10 +15,10 @@
         <table class="table table-striped-columns">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama Depan</th>
-                    <th scope="col">Nama Belakang</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">#</th>
+                    <th scope="col">@lang('admin.column.first_name')</th>
+                    <th scope="col">@lang('admin.column.last_name')</th>
+                    <th scope="col">@lang('admin.column.email')</th>
                     <th scope="col"></th>
                 </tr>
             </thead>

@@ -44,7 +44,7 @@
                 @enderror
             </div>
             <div class="form-group mt-2">
-                <input class="btn btn-success" type="submit" value="Simpan">
+                <input class="btn btn-success" type="submit" value=@lang('employee.button.save')>
             </div>
         </form>
     </div>
