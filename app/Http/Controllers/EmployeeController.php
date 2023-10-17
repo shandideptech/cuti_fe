@@ -93,6 +93,10 @@ class EmployeeController extends Controller
             return redirect()->route('login');
         }
 
+        if ($employee->status() == 400){
+            return redirect()->back()->with('error', $employee->json('userMessage'));
+        }
+
         return redirect()->back()->with('success', $employee->json('message'));
     }
 }
