@@ -45,3 +45,15 @@
         </form>
     </div>
 @endsection
+@section('script')
+<script>
+    $('#start_date').datepicker({                      
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    }); 
+    $('#end_date').datepicker({                      
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    });
+</script>
+@endsection
