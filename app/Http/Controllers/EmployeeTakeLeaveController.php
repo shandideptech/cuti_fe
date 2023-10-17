@@ -58,7 +58,7 @@ class EmployeeTakeLeaveController extends Controller
         }
 
         if ($employee_take_leave->status() == 400){
-            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'));
+            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'))->withInput();
         }
 
         if ($employee_take_leave->status() == 500){

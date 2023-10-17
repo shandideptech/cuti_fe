@@ -12,7 +12,10 @@
                 <select name="id_employee" id="id_employee" class="form-select form-select-sm p-2 mb-2">
                     <option selected disabled hidden>Pilih Karyawan</option>
                     @foreach($employees as $employee)
-                    <option value="{{$employee['id']}}">{{$employee['first_name']}} {{$employee['last_name']}}</option>
+                    <option value="{{$employee['id']}}"
+                        @if($employee['id'] == old('id_employee')) selected @endif>
+                        {{$employee['first_name']}} {{$employee['last_name']}}
+                    </option>
                     @endforeach
                 </select>
                 @error('id_employee')
@@ -22,19 +25,22 @@
                 <select name="id_leave" id="id_leave" class="form-select form-select-sm p-2 mb-2">
                     <option selected disabled hidden>Pilih Alasan Cuti</option>
                     @foreach($leaves as $leave)
-                    <option value="{{$leave['id']}}">{{$leave['title']}}</option>
+                    <option value="{{$leave['id']}}"
+                        @if($leave['id'] == old('id_leave')) selected @endif>
+                        {{$leave['title']}}
+                    </option>
                     @endforeach
                 </select>
                 @error('id_leave')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="start_date">Tangga Mulai (YYYY-MM-DD) <span style="color: red">*</span></label>
-                <input type="text" name="start_date" id="start_date" class="form-control mb-2">
+                <input type="text" name="start_date" id="start_date" class="form-control mb-2" value="{{old('start_date')}}">
                 @error('start_date')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="end_date">Tangga Selesai (YYYY-MM-DD) <span style="color: red">*</span></label>
-                <input type="text" name="end_date" id="end_date" class="form-control mb-2">
+                <input type="text" name="end_date" id="end_date" class="form-control mb-2" value="{{old('end_date')}}">
                 @error('end_date')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
