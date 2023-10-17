@@ -33,9 +33,12 @@
                         <td>{{ $admin['first_name'] }}</td>
                         <td>{{ $admin['last_name'] }}</td>
                         <td>{{ $admin['email'] }}</td>
-                        <td><a href="/admins/edit/{{ $admin['id'] }}"><i class="bi bi-pencil-square"
-                                    style="margin-right: 5px; color: green;"></i></a>
-                            <a href="/admins/delete/{{ $admin['id'] }}"><i class="bi bi-x-square-fill" style="color: #f43737;"></i></a>
+                        <td><a href="/admins/edit/{{ $admin['id'] }}">
+                                <i class="bi bi-pencil-square" style="margin-right: 5px; color: green;"></i>
+                            </a>
+                            <a onclick="return confirm('Are you Sure?')" href="/admins/delete/{{ $admin['id'] }}">
+                                <i class="bi bi-x-square-fill" style="color: #f43737;"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

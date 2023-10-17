@@ -36,10 +36,12 @@
                     <td>{{ $employee_take_leave['leave']['title'] }}</td>
                     <td>{{ \Carbon\Carbon::parse($employee_take_leave['start_date'])->translatedFormat('d F Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($employee_take_leave['end_date'])->translatedFormat('d F Y') }}</td>
-                    <td><a href="/employee-take-leaves/edit/{{ $employee_take_leave['id'] }}"><i class="bi bi-pencil-square"
-                            style="margin-right: 5px; color: green;"></i></a>
-                        <a href="/employee-take-leaves/delete/{{ $employee_take_leave['id'] }}"><i class="bi bi-x-square-fill"
-                            style="color: #f43737;"></i></a>
+                    <td><a href="/employee-take-leaves/edit/{{ $employee_take_leave['id'] }}">
+                            <i class="bi bi-pencil-square" style="margin-right: 5px; color: green;"></i>
+                        </a>
+                        <a onclick="return confirm('Are you Sure?')" href="/employee-take-leaves/delete/{{ $employee_take_leave['id'] }}">
+                            <i class="bi bi-x-square-fill" style="color: #f43737;"></i>
+                        </a>
                 </tr>
                 @endforeach
             </tbody>

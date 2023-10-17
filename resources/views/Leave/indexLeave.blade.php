@@ -31,9 +31,12 @@
                         <th scope="row">{{ $no++ }}</th>
                         <td>{{ $leave['title'] }}</td>
                         <td>{{ $leave['description'] }}</td>
-                        <td><a href="/leaves/edit/{{ $leave['id'] }}"><i class="bi bi-pencil-square"
-                                    style="margin-right: 5px; color: green;"></i></a>
-                            <a href="/leaves/delete/{{ $leave['id'] }}"><i class="bi bi-x-square-fill" style="color: #f43737;"></i></a>
+                        <td><a href="/leaves/edit/{{ $leave['id'] }}">
+                                <i class="bi bi-pencil-square" style="margin-right: 5px; color: green;"></i>
+                            </a>
+                            <a onclick="return confirm('Are you Sure?')" href="/leaves/delete/{{ $leave['id'] }}">
+                                <i class="bi bi-x-square-fill" style="color: #f43737;"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
