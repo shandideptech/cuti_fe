@@ -1,6 +1,7 @@
 @extends('Layout.main')
 @section('content')
     <div class="p2 mx-auto" style="width:50%">
+        <div class="mb-3 fs-5"><a class="mb-2" href="/employees"><i class="bi bi-arrow-left me-2"></i>Kembali</a></div>
         <h2>Form Tambah Data Pegawai</h2>
         @if(session()->has('error'))
             <div class="error mb-3 bg-danger text-light p-2 rounded text-center">{{ session('error') }}</div>

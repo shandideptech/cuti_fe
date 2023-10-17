@@ -1,6 +1,7 @@
 @extends('Layout.main')
 @section('content')
     <div class="p2 mx-auto" style="width:50%">
+        <div class="mb-3 fs-5"><a class="mb-2" href="/employee-take-leaves"><i class="bi bi-arrow-left me-2"></i>Kembali</a></div>
         <h2>Form Edit Data Pegawai Mengambil Cuti</h2>
         @if(session()->has('error'))
             <div class="error mb-3 bg-danger text-light p-2 rounded text-center">{{ session('error') }}</div>
@@ -13,7 +14,7 @@
                     <option selected disabled hidden>Pilih Karyawan</option>
                     @foreach($employees as $employee)
                     <option value="{{$employee['id']}}" 
-                    @if($employee['id'] == $employee_take_leave['employee']['id']) selected @endif>
+                    @if(!$employee_take_leave['employee'] ? null : $employee['id'] == $employee_take_leave['employee']['id']) selected @endif>
                         {{$employee['first_name']}} {{$employee['last_name']}}
                     </option>
                     @endforeach
@@ -26,7 +27,7 @@
                     <option selected disabled hidden>Pilih Alasan Cuti</option>
                     @foreach($leaves as $leave)
                     <option value="{{$leave['id']}}" 
-                    @if($leave['id'] == $employee_take_leave['leave']['id']) selected @endif>
+                    @if(!$employee_take_leave['leave']? null : $leave['id'] == $employee_take_leave['leave']['id']) selected @endif>
                         {{$leave['title']}}
                     </option>
                     @endforeach
