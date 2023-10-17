@@ -36,12 +36,14 @@
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="start_date">Tangga Mulai (YYYY-MM-DD) <span style="color: red">*</span></label>
-                <input type="text" name="start_date" id="start_date" class="form-control mb-2" value="{{$employee_take_leave['start_date']}}">
+                <input type="text" name="start_date" id="start_date" class="form-control mb-2" 
+                    value="{{ old('start_date') ? old('start_date') : $employee_take_leave['start_date'] }}">
                 @error('start_date')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="end_date">Tangga Selesai (YYYY-MM-DD) <span style="color: red">*</span></label>
-                <input type="text" name="end_date" id="end_date" class="form-control mb-2" value="{{$employee_take_leave['end_date']}}">
+                <input type="text" name="end_date" id="end_date" class="form-control mb-2" 
+                    value="{{ old('end_date') ? old('end_date') : $employee_take_leave['end_date'] }}">
                 @error('end_date')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
@@ -51,4 +53,16 @@
             </div>
         </form>
     </div>
+@endsection
+@section('script')
+<script>
+    $('#start_date').datepicker({                      
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    }); 
+    $('#end_date').datepicker({                      
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    });
+</script>
 @endsection

@@ -65,7 +65,7 @@ class EmployeeTakeLeaveController extends Controller
         }
 
         if ($employee_take_leave->status() == 500){
-            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'));
+            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'))->withInput();
         }
 
         return redirect('/employee-take-leaves')->with('success', $employee_take_leave->json('message'));
@@ -101,11 +101,11 @@ class EmployeeTakeLeaveController extends Controller
         ])->put(env('BE_URL').'/employee-take-leaves/'.$id, $request);
 
         if ($employee_take_leave->status() == 400){
-            return redirect()->back()->withErrors($employee_take_leave->json());
+            return redirect()->back()->withErrors($employee_take_leave->json())->withInput();
         }
 
         if ($employee_take_leave->status() == 500){
-            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'));
+            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'))->withInput();
         }
 
         return redirect('/employee-take-leaves')->with('success', $employee_take_leave->json('message'));

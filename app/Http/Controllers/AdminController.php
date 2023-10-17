@@ -44,11 +44,11 @@ class AdminController extends Controller
         ])->post(env('BE_URL').'/users', $request);
 
         if ($admin->status() == 400){
-            return redirect()->back()->withErrors($admin->json());
+            return redirect()->back()->withErrors($admin->json())->withInput();
         }
 
         if ($admin->status() == 500){
-            return redirect()->back()->with('error', $admin->json('userMessage'));
+            return redirect()->back()->with('error', $admin->json('userMessage'))>withInput();
         }
 
         return redirect('/admins')->with('success', $admin->json('message'));
@@ -72,11 +72,11 @@ class AdminController extends Controller
         ])->put(env('BE_URL').'/users/'.$id, $request);
 
         if ($admin->status() == 400){
-            return redirect()->back()->withErrors($admin->json());
+            return redirect()->back()->withErrors($admin->json())->withInput();
         }
 
         if ($admin->status() == 500){
-            return redirect()->back()->with('error', $admin->json('userMessage'));
+            return redirect()->back()->with('error', $admin->json('userMessage'))->withInput();
         }
 
         return redirect('/admins')->with('success', $admin->json('message'));

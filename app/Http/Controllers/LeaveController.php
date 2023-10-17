@@ -44,11 +44,11 @@ class LeaveController extends Controller
         ])->post(env('BE_URL').'/leaves', $request);
 
         if ($leave->status() == 400){
-            return redirect()->back()->withErrors($leave->json());
+            return redirect()->back()->withErrors($leave->json())->withInput();
         }
 
         if ($leave->status() == 500){
-            return redirect()->back()->with('error', $leave->json('userMessage'));
+            return redirect()->back()->with('error', $leave->json('userMessage'))->withInput();
         }
 
         return redirect('/leaves')->with('success', $leave->json('message'));
@@ -72,11 +72,11 @@ class LeaveController extends Controller
         ])->put(env('BE_URL').'/leaves/'.$id, $request);
 
         if ($leave->status() == 400){
-            return redirect()->back()->withErrors($leave->json());
+            return redirect()->back()->withErrors($leave->json())->withInput();
         }
 
         if ($leave->status() == 500){
-            return redirect()->back()->with('error', $leave->json('userMessage'));
+            return redirect()->back()->with('error', $leave->json('userMessage'))->withInput();
         }
 
         return redirect('/leaves')->with('success', $leave->json('message'));

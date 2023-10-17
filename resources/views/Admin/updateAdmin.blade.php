@@ -8,18 +8,19 @@
             <div class="form-group">
                 <label for="first_name">Nama Depan <span style="color: red">*</span></label>
                 <input type="text" name="first_name" id="first_name" class="form-control mb-2"
-                    value="{{ $admin['first_name'] }}">
+                    value="{{ old('first_name') ? old('first_name') : $admin['first_name'] }}">
                 @error('first_name')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="last_name">Nama Belakang <span style="color: red">*</span></label>
                 <input type="text" name="last_name" id="last_name" class="form-control mb-2"
-                    value="{{ $admin['last_name'] }}">
+                    value="{{ old('last_name') ? old('last_name') : $admin['last_name'] }}">
                 @error('last_name')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="email">Email <span style="color: red">*</span></label>
-                <input type="email" name="email" id="email" class="form-control mb-2" value="{{ $admin['email'] }}">
+                <input type="email" name="email" id="email" class="form-control mb-2" 
+                    value="{{ old('email') ? old('email') : $admin['email'] }}">
                 @error('email')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror

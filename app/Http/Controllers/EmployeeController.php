@@ -44,11 +44,11 @@ class EmployeeController extends Controller
         ])->post(env('BE_URL').'/employees', $request);
 
         if ($employee->status() == 400){
-            return redirect()->back()->withErrors($employee->json());
+            return redirect()->back()->withErrors($employee->json())->withInput();
         }
 
         if ($employee->status() == 500){
-            return redirect()->back()->with('error', $employee->json('userMessage'));
+            return redirect()->back()->with('error', $employee->json('userMessage'))->withInput();
         }
 
         return redirect('/employees')->with('success', $employee->json('message'));
@@ -72,11 +72,11 @@ class EmployeeController extends Controller
         ])->put(env('BE_URL').'/employees/'.$id, $request);
 
         if ($employee->status() == 400){
-            return redirect()->back()->withErrors($employee->json());
+            return redirect()->back()->withErrors($employee->json())->withInput();
         }
 
         if ($employee->status() == 500){
-            return redirect()->back()->with('error', $employee->json('userMessage'));
+            return redirect()->back()->with('error', $employee->json('userMessage'))->withInput();
         }
 
         return redirect('/employees')->with('success', $employee->json('message'));

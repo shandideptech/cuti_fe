@@ -10,27 +10,27 @@
             @csrf
             <div class="form-group">
                 <label for="first_name">Nama Depan <span style="color: red">*</span></label>
-                <input type="text" name="first_name" id="first_name" class="form-control mb-2" value="{{ $employee['first_name'] }}">
+                <input type="text" name="first_name" id="first_name" class="form-control mb-2" value="{{ old('first_name') ? old('first_name') : $employee['first_name'] }}">
                 @error('first_name')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="last_name">Nama Belakang <span style="color: red">*</span></label>
-                <input type="text" name="last_name" id="last_name" class="form-control mb-2" value="{{ $employee['last_name'] }}">
+                <input type="text" name="last_name" id="last_name" class="form-control mb-2" value="{{ old('last_name') ? old('last_name') : $employee['last_name'] }}">
                 @error('last_name')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="email">Email <span style="color: red">*</span></label>
-                <input type="email" name="email" id="email" class="form-control mb-2" value="{{ $employee['email'] }}">
+                <input type="email" name="email" id="email" class="form-control mb-2" value="{{ old('email') ? old('email') : $employee['email'] }}">
                 @error('email')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="phone_number">No HP <span style="color: red">*</span></label>
-                <input type="text" name="phone_number" id="phone_number" class="form-control mb-2" value="{{ $employee['phone_number'] }}">
+                <input type="text" name="phone_number" id="phone_number" class="form-control mb-2" value="{{ old('phone_number') ? old('phone_number') : $employee['phone_number'] }}">
                 @error('phone_number')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="address">Alamat <span style="color: red">*</span></label>
-                <input type="text" name="address" id="address" class="form-control mb-2" value="{{ $employee['address'] }}">
+                <input type="text" name="address" id="address" class="form-control mb-2" value="{{ old('address') ? old('address') : $employee['address'] }}">
                 @error('address')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror

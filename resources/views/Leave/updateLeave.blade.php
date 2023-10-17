@@ -10,12 +10,12 @@
             @csrf
             <div class="form-group">
                 <label for="title">Title <span style="color: red">*</span></label>
-                <input type="text" name="title" id="title" class="form-control mb-2" value="{{ $leave['title'] }}">
+                <input type="text" name="title" id="title" class="form-control mb-2" value="{{ old('title') ? old('title') : $leave['title'] }}">
                 @error('title')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
                 <label for="description">Deskripsi <span style="color: red">*</span></label>
-                <input type="text" name="description" id="description" class="form-control mb-2" value="{{ $leave['description'] }}">
+                <input type="text" name="description" id="description" class="form-control mb-2" value="{{ old('description') ? old('description') : $leave['description'] }}">
                 @error('description')
                     <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                 @enderror
