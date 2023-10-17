@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-between mb-3">
-            <h1 class="h3 mb-3">Master Data Pegawai</h1>
+            <h1 class="h3 mb-3">@lang('employee.title.index')</h1>
             <button class="btn btn-outline-primary" onclick="location.href='{{ url('employees/create') }}'">
                 <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
         </div>
@@ -15,13 +15,13 @@
         <table class="table table-striped-columns">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama Depan</th>
-                    <th scope="col">Nama Belakang</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">No HP</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">#</th>
+                    <th scope="col">@lang('employee.column.first_name')</th>
+                    <th scope="col">@lang('employee.column.last_name')</th>
+                    <th scope="col">@lang('employee.column.email')</th>
+                    <th scope="col">@lang('employee.column.phone_number')</th>
+                    <th scope="col">@lang('employee.column.address')</th>
+                    <th scope="col">@lang('employee.column.gender')</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -41,7 +41,8 @@
                         <td>{{ $employee['gender'] }}</td>
                         <td><a href="/employees/edit/{{ $employee['id'] }}"><i class="bi bi-pencil-square"
                                     style="margin-right: 5px; color: green;"></i></a>
-                            <a href="/employees/delete/{{ $employee['id'] }}"><i class="bi bi-x-square-fill"
+                            <a onclick="return confirm('Are you Sure?')" href="/employees/delete/{{ $employee['id'] }}">
+                                    <i class="bi bi-x-square-fill"
                                     style="color: #f43737;"></i></a>
                         </td>
                     </tr>
@@ -49,4 +50,28 @@
             </tbody>
         </table>
     </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+ 
+    $('.show_confirm').click(function(event) {
+        //  var form =  $(this).closest("form");
+        var href = $(this).attr('href');
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((confirmed) => {
+        if (confirmed) {
+            alert(href);
+        }
+        });
+     });
+ 
+</script>
 @endsection
