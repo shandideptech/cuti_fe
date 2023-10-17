@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-between mb-3">
             <h1 class="h3 mb-3">@lang('employee.title.index')</h1>
             <button class="btn btn-outline-primary" onclick="location.href='{{ url('employees/create') }}'">
-                <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
+                <i class="bi bi-file-earmark-plus"></i> @lang('employee.button.add')</button>
         </div>
         <div class="row" id="read"></div>
     </div>
