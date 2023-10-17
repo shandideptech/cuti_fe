@@ -32,8 +32,8 @@
                 @foreach($employee_take_leaves as $employee_take_leave)
                 <tr>
                     <th scope="row">{{ $no++ }}</th>
-                    <td>{{ $employee_take_leave['employee']['first_name'] }} {{ $employee_take_leave['employee']['last_name'] }}</td>
-                    <td>{{ $employee_take_leave['leave']['title'] }}</td>
+                    <td>{{ !$employee_take_leave['employee'] ? '[Data Deleted]' : $employee_take_leave['employee']['first_name'] . ' ' .  $employee_take_leave['employee']['last_name']}} </td>
+                    <td>{{ !$employee_take_leave['leave'] ? '[Data Deleted]' : $employee_take_leave['leave']['title'] }}</td>
                     <td>{{ \Carbon\Carbon::parse($employee_take_leave['start_date'])->translatedFormat('d F Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($employee_take_leave['end_date'])->translatedFormat('d F Y') }}</td>
                     <td><a href="/employee-take-leaves/edit/{{ $employee_take_leave['id'] }}">
