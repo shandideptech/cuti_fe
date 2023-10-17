@@ -12,6 +12,9 @@
         @if (session()->has('success'))
             <div class="error mb-3 bg-success text-light p-2 rounded">{{ session('success') }}</div>
         @endif
+        @if (session()->has('error'))
+            <div class="error mb-3 bg-danger text-light p-2 rounded">{{ session('error') }}</div>
+        @endif
         <table class="table table-striped-columns">
             <thead>
                 <tr>
