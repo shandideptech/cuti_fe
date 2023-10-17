@@ -53,8 +53,12 @@ class EmployeeTakeLeaveController extends Controller
             return redirect()->route('login');
         }
 
-        if ($employee_take_leave->status() == 400){
+        if ($employee_take_leave->status() == 422){
             return redirect()->back()->withErrors($employee_take_leave->json());
+        }
+
+        if ($employee_take_leave->status() == 400){
+            return redirect()->back()->with('error', $employee_take_leave->json('userMessage'));
         }
 
         if ($employee_take_leave->status() == 500){
