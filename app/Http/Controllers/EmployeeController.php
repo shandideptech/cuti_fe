@@ -26,6 +26,7 @@ class EmployeeController extends Controller
         $employees = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
+            'Language' => session('locale'),
         ])->get(env('BE_URL').'/employees');
         
         return view('Employee.indexEmployee', [
