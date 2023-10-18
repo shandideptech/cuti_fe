@@ -4,10 +4,10 @@
         <div class="mb-3 fs-5"><a class="mb-2" href="/employees"><i class="bi bi-arrow-left me-2"></i>@lang('employee.button.back')</a></div>
         <h2>@lang('employee.title.create')</h2>
         <button id="button-id" class="btn btn-outline-secondary mb-2" onclick="onclickIdForm()">
-            Indonesia
+            ID
         </button>
         <button id="button-en" class="btn btn-outline-secondary mb-2" onclick="onclickEnForm()">
-            English
+            EN
         </button>
         @if(session()->has('error'))
             <div class="error mb-3 bg-danger text-light p-2 rounded text-center">{{ session('error') }}</div>
@@ -27,7 +27,7 @@
                         <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                     @enderror
                     <label for="email_id">Email <span style="color: red">*</span></label>
-                    <input type="email_id" name="email_id" id="email_id" class="form-control mb-2" value="{{old('email_id')}}">
+                    <input type="email" name="email_id" id="email_id" class="form-control mb-2" value="{{old('email_id')}}">
                     @error('email_id')
                         <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                     @enderror
@@ -68,7 +68,7 @@
                         <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                     @enderror
                     <label for="email_en">Email <span style="color: red">*</span></label>
-                    <input type="email_en" name="email_en" id="email_en" class="form-control mb-2" value="{{old('email_en')}}">
+                    <input type="email" name="email_en" id="email_en" class="form-control mb-2" value="{{old('email_en')}}">
                     @error('email_en')
                         <div class="error mb-3 bg-danger text-light p-2 rounded">{{ $message }}</div>
                     @enderror
