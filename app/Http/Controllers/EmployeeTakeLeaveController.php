@@ -26,6 +26,7 @@ class EmployeeTakeLeaveController extends Controller
         $employee_take_leaves = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
+            'Language' => session('locale'),
         ])->get(env('BE_URL').'/employee-take-leaves');
         
         return view('EmployeeTakeLeave.indexEmployeeTakeLeave', [
@@ -34,19 +35,35 @@ class EmployeeTakeLeaveController extends Controller
     }
 
     public function create(){
-        $employees = Http::withHeaders([
+        $employees_indonesia = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
+            'Language' => 'id'
         ])->get(env('BE_URL').'/employees');
 
-        $leaves = Http::withHeaders([
+        $employees_english = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
+            'Language' => 'en'
+        ])->get(env('BE_URL').'/employees');
+
+        $leaves_indonesia = Http::withHeaders([
+            'Authorization' => 'Bearer '.session('token'),
+            'Accept' => 'application/json',
+            'Language' => 'id'
+        ])->get(env('BE_URL').'/leaves');
+
+        $leaves_english = Http::withHeaders([
+            'Authorization' => 'Bearer '.session('token'),
+            'Accept' => 'application/json',
+            'Language' => 'en'
         ])->get(env('BE_URL').'/leaves');
 
         return view('EmployeeTakeLeave.createEmployeeTakeLeave', [
-            'employees' => $employees->json('data'),
-            'leaves' => $leaves->json('data'),
+            'employees_indonesia' => $employees_indonesia->json('data'),
+            'employees_english' => $employees_english->json('data'),
+            'leaves_indonesia' => $leaves_indonesia->json('data'),
+            'leaves_english' => $leaves_english->json('data'),
         ]);
     }
 
@@ -54,10 +71,11 @@ class EmployeeTakeLeaveController extends Controller
         $employee_take_leave = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
+            'Language' => session('locale')
         ])->post(env('BE_URL').'/employee-take-leaves', $request);
 
         if ($employee_take_leave->status() == 422){
-            return redirect()->back()->withErrors($employee_take_leave->json());
+            return redirect()->back()->withErrors($employee_take_leave->json())->withInput();
         }
 
         if ($employee_take_leave->status() == 400){
