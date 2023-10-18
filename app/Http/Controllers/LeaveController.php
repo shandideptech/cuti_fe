@@ -26,6 +26,7 @@ class LeaveController extends Controller
         $leaves = Http::withHeaders([
             'Authorization' => 'Bearer '.session('token'),
             'Accept' => 'application/json',
+            'Language' => session('locale'),
         ])->get(env('BE_URL').'/leaves');
         
         return view('Leave.indexLeave', [
