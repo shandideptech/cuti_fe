@@ -18,9 +18,9 @@
                     href="/logout">
                     Logout
                 </a>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <button class="btn {{session('locale') == 'id' ? 'btn-secondary' : 'btn-outline-secondary'}}" onclick="location.href='{{ url('set-language/id') }}'" checked>ID</button>
-                    <button class="btn {{session('locale') == 'en' ? 'btn-secondary' : 'btn-outline-secondary'}}" onclick="location.href='{{ url('set-language/en') }}'">EN</button>
+                <div class="btn-group">
+                    <button class="btn {{session('locale') == 'id' ? 'btn-success' : 'btn-outline-secondary'}}" onclick="location.href='{{ url('set-language/id') }}'" checked>ID</button>
+                    <button class="btn {{session('locale') == 'en' ? 'btn-success' : 'btn-outline-secondary'}}" onclick="location.href='{{ url('set-language/en') }}'">EN</button>
                 </div>
             </li>
         </ul>
