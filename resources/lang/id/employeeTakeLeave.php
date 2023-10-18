@@ -16,7 +16,7 @@ return [
         'female' => 'Perempuan'
     ],
 	'button' => [
-		'add' => 'Tambah Pegawai',
+		'add' => 'Tambah Pegawai Mengambil Cuti',
 		'save' => 'Simpan',
 		'back' => 'Kembali'
 	],

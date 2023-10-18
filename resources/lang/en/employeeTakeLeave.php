@@ -16,7 +16,7 @@ return [
         'female' => 'Female'
     ],
 	'button' => [
-		'add' => 'Add Employee',
+		'add' => 'Add Employee Take Leave',
 		'save' => 'Save',
 		'back' => 'Back'
 	],
